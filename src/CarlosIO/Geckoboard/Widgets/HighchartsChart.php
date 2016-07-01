@@ -209,7 +209,7 @@ class HighchartsChart extends Widget
                 ],
                 'renderTo' => 'container',
                 'backgroundColor'=> 'transparent',
-                'lineColor' => 'rgba(35,37,38,101)',
+                'lineColor' => 'rgba(35,37,38,100)',
                 'plotShadow'=> false,
                 'defaultSeriesType' => 'line',
                 'plotBackgroundColor' => null,
