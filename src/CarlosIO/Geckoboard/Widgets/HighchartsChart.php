@@ -204,6 +204,20 @@ class HighchartsChart extends Widget
         $returnValues = array(
             'chart' => array(
                 'type' => $this->getType(),
+                'style' => [
+                  'color' => '#b9bbbb'
+                ],
+                'renderTo' => 'container',
+                'backgroundColor'=> 'transparent',
+                'lineColor' => 'rgba(35,37,38,100)',
+                'plotShadow'=> false,
+                'defaultSeriesType' => 'line',
+                'plotBackgroundColor' => null,
+                'borderColor' => null,
+                'plotBorderColor' => null,
+                'plotBorderWidth' => null,
+                'plotShadow' => false,
+                'zoomType' => 'x',
             ),
             'title' => array(
                 'text' => $this->getTitle(),
