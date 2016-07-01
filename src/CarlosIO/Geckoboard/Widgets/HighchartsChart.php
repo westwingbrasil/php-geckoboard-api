@@ -204,6 +204,7 @@ class HighchartsChart extends Widget
         $returnValues = array(
             'chart' => array(
                 'type' => $this->getType(),
+                /*Criar Método*/
                 'style' => [
                   'color' => '#b9bbbb'
                 ],
@@ -220,15 +221,22 @@ class HighchartsChart extends Widget
                 'zoomType' => 'x',
             ),
             'title' => array(
-                'text' => $this->getTitle(),
+              'text' => $this->getTitle(),
             ),
             'subtitle' => array(
-                'text' => $this->getSubtitle(),
+              'text' => $this->getSubtitle(),
             ),
+            /*Criar Método*/
+            'credits' => [
+              'enabled' => false
+            ],
         );
 
         if ($this->getXAxisLabels()) {
             $returnValues['xAxis']['categories'] = $this->getXAxisLabels();
+
+            /*Criar método*/
+            $returnValues['xAxis']['gridLineColor'] = 'rgba(255,255,255,0.05)';
         }
 
         if ($this->getYAxisLabels()) {
@@ -246,9 +254,11 @@ class HighchartsChart extends Widget
         $returnValues['plotOptions'] = array(
             'line' => array(
                 'dataLabels' => array(
-                    'enabled' => true,
+                  /*criar método*/
+                    'enabled' => false,
                 ),
-                'enableMouseTracking' => false,
+                /*criar método*/
+                'enableMouseTracking' => true,
             ),
         );
 
