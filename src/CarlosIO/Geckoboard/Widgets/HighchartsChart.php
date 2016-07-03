@@ -241,10 +241,6 @@ class HighchartsChart extends Widget
 
         if ($this->getYAxisLabels()) {
           $returnValues['yAxis']['categories'] = $this->getYAxisLabels();
-
-          /*Criar Métodos*/
-          $returnValues['yAxis']['min'] = 0;
-          $returnValues['yAxis']['gridLineColor'] = 'rgba(255,255,255,0.05)';
         }
 
         if ($this->getXAxisTitle()) {
@@ -265,6 +261,10 @@ class HighchartsChart extends Widget
                 'enableMouseTracking' => true,
             ),
         );
+
+        /*Criar Métodos*/
+        $returnValues['yAxis']['min'] = 0;
+        $returnValues['yAxis']['gridLineColor'] = 'rgba(255,255,255,0.05)';
 
         return array('highchart' => $this->addSeriesData($returnValues));
     }
