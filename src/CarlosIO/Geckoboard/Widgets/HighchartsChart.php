@@ -201,46 +201,99 @@ class HighchartsChart extends Widget
    */
   public function getData()
   {
-    $returnValues = array(
-        'chart' => array(
+    $returnValues = [
+        'chart' => [
           'type' => $this->getType(),
           /*Criar Método*/
           'style' => [
             'color' => '#b9bbbb'
           ],
           'renderTo' => 'container',
-          'backgroundColor'=> 'transparent',
+          'backgroundColor'=> [
+            'linearGradient' => [0, 0, 0, 400],
+            'stops' => [
+              [0, 'rgb(96, 96, 96)'],
+              [1, 'rgb(16, 16, 16)']
+            ]
+          ],
+          'borderWidth' => 0,
+          'borderRadius' => 15,
           'lineColor' => 'rgba(35,37,38,100)',
           'plotShadow'=> false,
           'defaultSeriesType' => 'line',
           'plotBackgroundColor' => null,
           'borderColor' => null,
           'plotBorderColor' => null,
-          'plotBorderWidth' => null,
-          'plotShadow' => false,
+          'plotBorderWidth' => 0,
           'zoomType' => 'x',
-        ),
-        'title' => array(
+        ],
+        'title' => [
           'text' => $this->getTitle(),
-        ),
-        'subtitle' => array(
+          'style' => [
+            'color' => '#FFF',
+            'font' => '16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+          ],
+        ],
+        'subtitle' => [
           'text' => $this->getSubtitle(),
-        ),
+          'style' => [
+            'color' => '#DDD',
+            'font' => '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+          ],
+        ],
         /*Criar Método*/
         'credits' => [
           'enabled' => false
         ],
-    );
+    ];
+
+    $returnValues['colors'] = [
+      "#DDDF0D", "#7798BF", "#55BF3B", "#DF5353", "#aaeeee", "#ff0066",
+      "#eeaaee", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
+    ];
 
     if ($this->getXAxisLabels()) {
       $returnValues['xAxis']['categories'] = $this->getXAxisLabels();
 
       /*Criar método*/
       $returnValues['xAxis']['gridLineColor'] = 'rgba(255,255,255,0.05)';
+      $returnValues['xAxis']['gridLineWidth'] = 0;
+      $returnValues['xAxis']['lineColor'] = '#999';
+      $returnValues['xAxis']['tickColor'] = '#999';
+      $returnValues['xAxis']['labels'] = [
+        'style' => [
+          'color' => '#999',
+          'fontWeight' => 'bold'
+        ],
+      ];
+      $returnValues['xAxis']['title'] = [
+        'style' => [
+          'color' => '#AAA',
+          'font' => 'bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+        ],
+      ];
     }
 
     if ($this->getYAxisLabels()) {
       $returnValues['yAxis']['categories'] = $this->getYAxisLabels();
+      $returnValues['yAxis']['alternateGridColor'] = null;
+      $returnValues['yAxis']['minorTickInterval'] = null;
+      $returnValues['yAxis']['gridLineColor'] = 'rgba(255, 255, 255, .1)';
+      $returnValues['yAxis']['lineWidth'] = 'rgba(255, 255, 255, .1)';
+      $returnValues['yAxis']['tickWidth'] = 'rgba(255, 255, 255, .1)';
+      $returnValues['yAxis']['labels'] = [
+        'style' => [
+          'color' => '#999',
+          'fontWeight' => 'bold'
+        ]
+      ];
+      $returnValues['yAxis']['title'] = [
+        'style' => [
+            'color' => '#AAA',
+            'font' => 'bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
+        ],
+      ];
+      $returnValues['yAxis']['min'] = 0;
     }
 
     if ($this->getXAxisTitle()) {
@@ -251,30 +304,65 @@ class HighchartsChart extends Widget
       $returnValues['yAxis']['title']['text'] = $this->getYAxisTitle();
     }
 
-    $returnValues['plotOptions'] = array(
-      'line' => array(
-        'dataLabels' => array(
-          /*criar método*/
-            'enabled' => false,
-        ),
-        /*criar método*/
-        'enableMouseTracking' => true,
-      ),
-    );
+    $returnValues['plotOptions'] = [
+      'line' => [
+        'dataLabels' => [
+          'color' => '#CCC',
+          'enabled'=> false,
+        ],
+        'marker' => [
+          'lineColor' => '#333',
+        ],
+      ],
+      'spline' => [
+        'marker' => [
+          'lineColor' => '#333',
+        ],
+      ],
+      'scatter' => [
+        'marker' => [
+          'lineColor' => '#333',
+        ],
+      ],
+    ];
 
-    /*Criar Métodos*/
-    $returnValues['yAxis']['min'] = 0;
-    $returnValues['yAxis']['gridLineColor'] = 'rgba(255,255,255,0.05)';
+    $returnValues['tooltip'] = [
+      'backgroundColor' => [
+        'linearGradient' => [0, 0, 0, 50],
+        'stops' => [
+          [0, 'rgba(96, 96, 96, .8)'],
+          [1, 'rgba(16, 16, 16, .8)']
+        ]
+      ],
+      'borderWidth' => 0,
+      'style' => [
+        'color' => '#FFF'
+      ]
+    ];
 
     /*Criar Métodos*/
     $returnValues['legend'] = [
-      'floating' => true,
-      'align' => 'right',
-      'verticalAlign' => 'top',
-      'x' => -195,
-      'y' => 3,
-      'borderWidth' => 0,
-      "layout" => "vertical",
+      'itemStyle' => [
+        'color' => '#CCC'
+      ],
+      'itemHoverStyle' => [
+        'color' => '#FFF'
+      ],
+      'itemHiddenStyle' => [
+        'color' => '#333'
+      ]
+    ];
+
+    $returnValues['toolbar'] = [
+      'itemStyle' => [
+        'color' => '#CCC'
+      ]
+    ];
+
+    $returnValues['labels'] = [
+      'style' => [
+        'color' => '#CCC'
+      ]
     ];
 
     return array('highchart' => $this->addSeriesData($returnValues));
