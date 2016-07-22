@@ -19,12 +19,9 @@ class HighchartsChartTest extends \PHPUnit_Framework_TestCase
 
         $data = $myWidget->getData();
         $json = json_encode($data);
-
-        $testJson = '{"highchart":{"chart":{"type":"line"},"title":{"text":"Monthly Average Temperature"},"subtitle":{"text":"Source: WorldClimate.com"},'.
-            '"xAxis":{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},'.
-            '"yAxis":{"title":{"text":"Temperature (\u00b0C)"}},"plotOptions":{"line":{"dataLabels":{"enabled":true},"enableMouseTracking":false}},'.
-            '"series":[{"name":"Tokyo","data":[7,6.9,9.5,14.5,18.4,21.5,25.2,26.5,23.3,18.3,13.9,9.6],"type":"line"},{"name":"London","data":[3.9,4.2,5.7,8.5,'.
-            '11.9,15.2,17,16.6,14.2,10.3,6.6,4.8],"type":"line"}]}}';
+        $testJson = <<<JSON
+{"highchart":{"chart":{"type":"line","style":{"color":"#b9bbbb"},"renderTo":"container","backgroundColor":{"linearGradient":[0,0,0,400],"stops":[[0,"rgb(96, 96, 96)"],[1,"rgb(16, 16, 16)"]]},"borderWidth":0,"borderRadius":15,"lineColor":"rgba(35,37,38,100)","plotShadow":false,"defaultSeriesType":"line","plotBackgroundColor":null,"borderColor":null,"plotBorderColor":null,"plotBorderWidth":0,"zoomType":"x"},"title":{"text":"Monthly Average Temperature","style":{"color":"#FFF","font":"16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}},"subtitle":{"text":"Source: WorldClimate.com","style":{"color":"#DDD","font":"12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}},"credits":{"enabled":false},"colors":["#DDDF0D","#7798BF","#55BF3B","#DF5353","#aaeeee","#ff0066","#eeaaee","#55BF3B","#DF5353","#7798BF","#aaeeee"],"xAxis":{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"gridLineColor":"rgba(255,255,255,0.05)","gridLineWidth":0,"lineColor":"#999","tickColor":"#999","labels":{"style":{"color":"#999","fontWeight":"bold"}},"title":{"style":{"color":"#AAA","font":"bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}}},"yAxis":{"title":{"text":"Temperature (\u00b0C)"}},"plotOptions":{"line":{"dataLabels":{"color":"#CCC","enabled":false},"marker":{"lineColor":"#333"}},"spline":{"marker":{"lineColor":"#333"}},"scatter":{"marker":{"lineColor":"#333"}}},"tooltip":{"backgroundColor":{"linearGradient":[0,0,0,50],"stops":[[0,"rgba(96, 96, 96, .8)"],[1,"rgba(16, 16, 16, .8)"]]},"borderWidth":0,"style":{"color":"#FFF"}},"legend":{"itemStyle":{"color":"#CCC"},"itemHoverStyle":{"color":"#FFF"},"itemHiddenStyle":{"color":"#333"}},"toolbar":{"itemStyle":{"color":"#CCC"}},"labels":{"style":{"color":"#CCC"}},"series":[{"name":"Tokyo","data":[7,6.9,9.5,14.5,18.4,21.5,25.2,26.5,23.3,18.3,13.9,9.6],"type":"line"},{"name":"London","data":[3.9,4.2,5.7,8.5,11.9,15.2,17,16.6,14.2,10.3,6.6,4.8],"type":"line"}]}}
+JSON;
 
         $this->assertEquals($testJson, $json);
     }
@@ -48,11 +45,9 @@ class HighchartsChartTest extends \PHPUnit_Framework_TestCase
         $data = $myWidget->getData();
         $json = json_encode($data);
 
-        $testJson = '{"highchart":{"chart":{"type":"line"},"title":{"text":"Monthly Average Temperature"},"subtitle":{"text":"Source: WorldClimate.com"},'.
-            '"xAxis":{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"title":{"text":"Month"}},'.
-            '"plotOptions":{"line":{"dataLabels":{"enabled":true},"enableMouseTracking":false}},'.
-            '"series":[{"name":"Tokyo","data":[7,6.9,9.5,14.5,18.4,21.5,25.2,26.5,23.3,18.3,13.9,9.6],"type":"line"},{"name":"London","data":[3.9,4.2,5.7,8.5,'.
-            '11.9,15.2,17,16.6,14.2,10.3,6.6,4.8],"type":"line"}]}}';
+        $testJson = <<<JSON
+{"highchart":{"chart":{"type":"line","style":{"color":"#b9bbbb"},"renderTo":"container","backgroundColor":{"linearGradient":[0,0,0,400],"stops":[[0,"rgb(96, 96, 96)"],[1,"rgb(16, 16, 16)"]]},"borderWidth":0,"borderRadius":15,"lineColor":"rgba(35,37,38,100)","plotShadow":false,"defaultSeriesType":"line","plotBackgroundColor":null,"borderColor":null,"plotBorderColor":null,"plotBorderWidth":0,"zoomType":"x"},"title":{"text":"Monthly Average Temperature","style":{"color":"#FFF","font":"16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}},"subtitle":{"text":"Source: WorldClimate.com","style":{"color":"#DDD","font":"12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}},"credits":{"enabled":false},"colors":["#DDDF0D","#7798BF","#55BF3B","#DF5353","#aaeeee","#ff0066","#eeaaee","#55BF3B","#DF5353","#7798BF","#aaeeee"],"xAxis":{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"gridLineColor":"rgba(255,255,255,0.05)","gridLineWidth":0,"lineColor":"#999","tickColor":"#999","labels":{"style":{"color":"#999","fontWeight":"bold"}},"title":{"style":{"color":"#AAA","font":"bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"},"text":"Month"}},"plotOptions":{"line":{"dataLabels":{"color":"#CCC","enabled":false},"marker":{"lineColor":"#333"}},"spline":{"marker":{"lineColor":"#333"}},"scatter":{"marker":{"lineColor":"#333"}}},"tooltip":{"backgroundColor":{"linearGradient":[0,0,0,50],"stops":[[0,"rgba(96, 96, 96, .8)"],[1,"rgba(16, 16, 16, .8)"]]},"borderWidth":0,"style":{"color":"#FFF"}},"legend":{"itemStyle":{"color":"#CCC"},"itemHoverStyle":{"color":"#FFF"},"itemHiddenStyle":{"color":"#333"}},"toolbar":{"itemStyle":{"color":"#CCC"}},"labels":{"style":{"color":"#CCC"}},"series":[{"name":"Tokyo","data":[7,6.9,9.5,14.5,18.4,21.5,25.2,26.5,23.3,18.3,13.9,9.6],"type":"line"},{"name":"London","data":[3.9,4.2,5.7,8.5,11.9,15.2,17,16.6,14.2,10.3,6.6,4.8],"type":"line"}]}}
+JSON;
 
         $this->assertEquals($testJson, $json);
     }
@@ -82,11 +77,9 @@ class HighchartsChartTest extends \PHPUnit_Framework_TestCase
         $data = $myWidget->getData();
         $json = json_encode($data);
 
-        $testJson = '{"highchart":{"chart":{"type":"line"},"title":{"text":"Monthly Average Temperature"},"subtitle":{"text":"Source: WorldClimate.com"},'.
-            '"yAxis":{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],'.
-            '"title":{"text":"Temperature (\u00b0C)"}},"plotOptions":{"line":{"dataLabels":{"enabled":true},"enableMouseTracking":false}},'.
-            '"series":[{"name":"Tokyo","data":[7,6.9,9.5,14.5,18.4,21.5,25.2,26.5,23.3,18.3,13.9,9.6],"type":"line"},{"name":"London","data":[3.9,4.2,5.7,8.5,'.
-            '11.9,15.2,17,16.6,14.2,10.3,6.6,4.8],"type":"line"}]}}';
+        $testJson = <<<JSON
+{"highchart":{"chart":{"type":"line","style":{"color":"#b9bbbb"},"renderTo":"container","backgroundColor":{"linearGradient":[0,0,0,400],"stops":[[0,"rgb(96, 96, 96)"],[1,"rgb(16, 16, 16)"]]},"borderWidth":0,"borderRadius":15,"lineColor":"rgba(35,37,38,100)","plotShadow":false,"defaultSeriesType":"line","plotBackgroundColor":null,"borderColor":null,"plotBorderColor":null,"plotBorderWidth":0,"zoomType":"x"},"title":{"text":"Monthly Average Temperature","style":{"color":"#FFF","font":"16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}},"subtitle":{"text":"Source: WorldClimate.com","style":{"color":"#DDD","font":"12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"}},"credits":{"enabled":false},"colors":["#DDDF0D","#7798BF","#55BF3B","#DF5353","#aaeeee","#ff0066","#eeaaee","#55BF3B","#DF5353","#7798BF","#aaeeee"],"yAxis":{"categories":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"alternateGridColor":null,"minorTickInterval":null,"gridLineColor":"rgba(255, 255, 255, .1)","lineWidth":"rgba(255, 255, 255, .1)","tickWidth":"rgba(255, 255, 255, .1)","labels":{"style":{"color":"#999","fontWeight":"bold"}},"title":{"style":{"color":"#AAA","font":"bold 12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif"},"text":"Temperature (\u00b0C)"},"min":0},"plotOptions":{"line":{"dataLabels":{"color":"#CCC","enabled":false},"marker":{"lineColor":"#333"}},"spline":{"marker":{"lineColor":"#333"}},"scatter":{"marker":{"lineColor":"#333"}}},"tooltip":{"backgroundColor":{"linearGradient":[0,0,0,50],"stops":[[0,"rgba(96, 96, 96, .8)"],[1,"rgba(16, 16, 16, .8)"]]},"borderWidth":0,"style":{"color":"#FFF"}},"legend":{"itemStyle":{"color":"#CCC"},"itemHoverStyle":{"color":"#FFF"},"itemHiddenStyle":{"color":"#333"}},"toolbar":{"itemStyle":{"color":"#CCC"}},"labels":{"style":{"color":"#CCC"}},"series":[{"name":"Tokyo","data":[7,6.9,9.5,14.5,18.4,21.5,25.2,26.5,23.3,18.3,13.9,9.6],"type":"line"},{"name":"London","data":[3.9,4.2,5.7,8.5,11.9,15.2,17,16.6,14.2,10.3,6.6,4.8],"type":"line"}]}}
+JSON;
 
         $this->assertEquals($testJson, $json);
     }
