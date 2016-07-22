@@ -375,12 +375,22 @@ class HighchartsChart extends Widget
    */
   private function addSeriesData($returnValues)
   {
-    foreach ($this->getSeries() as $serieName => $serieValues) {
-      $returnValues['series'][] = array(
-        'name' => (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
-        'data' => (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
-        'type' => (isset($serieValues['type']) && $serieValues['type']) ? $serieValues['type'] : 'line',
-      );
+    switch ($this->getType()) {
+      case 'line':
+        foreach ($this->getSeries() as $serieName => $serieValues) {
+          $returnValues['series'][] = array(
+            'name' => (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
+            'data' => (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
+            'type' => (isset($serieValues['type']) && $serieValues['type']) ? $serieValues['type'] : 'line',
+          );
+        }
+        break;
+      case 'pie':
+        $returnValues['series'][] = $this->series;
+        break;
+      default:
+        # code...
+        break;
     }
 
     return $returnValues;
