@@ -83,4 +83,36 @@ JSON;
 
         $this->assertEquals($testJson, $json);
     }
+
+    public function testJsonForPieChart()
+    {
+        $myWidget = new HighchartsChart();
+        $myWidget->setId('56797-7e3d4237-f798-433a-abe7-ac1857dfdf0f');
+
+        $myWidget->setType('pie');
+        $myWidget->setTitle('Monthly Average Temperature');
+        $myWidget->setSubtitle('Source: WorldClimate.com');
+        $myWidget->setYAxisLabels(array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
+        $myWidget->setYAxisTitle('Temperature (°C)');
+
+        $series = array(
+            'Tokyo' => array(7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6),
+            'London' => array(3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8),
+        );
+
+        foreach ($series as $city => $values) {
+            foreach ($values as $val) {
+                $myWidget->addItemSerie($city, $val);
+            }
+        }
+
+        $data = $myWidget->getData();
+        $json = json_encode($data);
+
+        $testJson = <<<JSON
+{"highchart":{"chart":{"plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false,"type":"pie"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":false},"showInLegend":true}},"series":[{"colorByPoint":true,"data":[{"name":"Microsoft Internet Explorer","y":56.33},{"name":"Chrome","selected":true,"sliced":true,"y":24.03},{"name":"Firefox","y":10.38},{"name":"Safari","y":4.77},{"name":"Opera","y":0.91},{"name":"Proprietary or Undetectable","y":0.2}],"name":"Brands"}],"title":{"text":"Browser market shares January, 2015 to May, 2015"},"tooltip":{"pointFormat":"{series.name}: {point.percentage:.1f}%</b>"}}}
+JSON;
+
+        $this->assertEquals($testJson, $json);
+    }
 }
