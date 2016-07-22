@@ -43,6 +43,15 @@ class HighchartsChart extends Widget
      */
     protected $borderRadius = 0;
 
+    protected $plotBorderColor = '#C0C0C0';
+
+    public function setPlotBorderColor($bordercolor)
+    {
+      $this->plotBorderColor = $bordercolor;
+
+      return $this;
+    }
+
     /**
      * @return array
      */
@@ -255,12 +264,7 @@ class HighchartsChart extends Widget
                 'backgroundColor' => $this->backgroundColor,
                 'borderWidth' => $this->borderWidth,
                 'borderRadius' => $this->borderRadius,
-                'lineColor' => 'rgba(35,37,38,100)',
-                'plotShadow' => false,
-                'defaultSeriesType' => 'line',
-                'plotBackgroundColor' => null,
-                'borderColor' => null,
-                'plotBorderColor' => null,
+                'plotBorderColor' => $this->plotBorderColor,
                 'plotBorderWidth' => 0,
                 'zoomType' => 'x',
             ],
