@@ -26,12 +26,20 @@ class HighchartsChart extends Widget
     /**
      * @var array
      */
-    protected $defaultStyle = [];
+    protected $defaultStyle = [
+        'color' => '#b9bbbb'
+    ];
 
     /**
      * @var string | array
      */
-    protected $backgroundColor = '#FFFFFF';
+    protected $backgroundColor = [
+        'linearGradient' => [0, 0, 0, 400],
+        'stops' => [
+            [0, 'rgb(96, 96, 96)'],
+            [1, 'rgb(16, 16, 16)']
+        ]
+    ];
 
     /**
      * @var integer
@@ -41,9 +49,9 @@ class HighchartsChart extends Widget
     /**
      * @var integer
      */
-    protected $borderRadius = 0;
+    protected $borderRadius = 15;
 
-    protected $plotBorderColor = '#C0C0C0';
+    protected $plotBorderColor = null;
 
     public function setPlotBorderColor($bordercolor)
     {
@@ -264,6 +272,7 @@ class HighchartsChart extends Widget
                 'backgroundColor' => $this->backgroundColor,
                 'borderWidth' => $this->borderWidth,
                 'borderRadius' => $this->borderRadius,
+                'borderColor' => null,
                 'plotBorderColor' => $this->plotBorderColor,
                 'plotBorderWidth' => 0,
                 'zoomType' => 'x',
