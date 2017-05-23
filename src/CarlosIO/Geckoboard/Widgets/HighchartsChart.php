@@ -435,6 +435,15 @@ class HighchartsChart extends Widget
                     );
                 }
                 break;
+            case 'column':
+            case 'bar':
+                foreach ($this->getSeries() as $serieName => $serieValues) {
+                    $returnValues['series'][] = array(
+                        'name' => (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
+                        'data' => (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
+                    );
+                }
+                break;
             case 'pie':
                 $returnValues['series'][] = $this->series;
                 break;
