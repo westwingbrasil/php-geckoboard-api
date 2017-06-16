@@ -53,6 +53,28 @@ class HighchartsChart extends Widget
 
     protected $plotBorderColor = null;
 
+    protected $plotOptions = [
+        'line' => [
+            'dataLabels' => [
+                'color' => '#CCC',
+                'enabled' => false,
+            ],
+            'marker' => [
+                'lineColor' => '#333',
+            ],
+        ],
+        'spline' => [
+            'marker' => [
+                'lineColor' => '#333',
+            ],
+        ],
+        'scatter' => [
+            'marker' => [
+                'lineColor' => '#333',
+            ],
+        ],
+    ];
+
     public function setPlotBorderColor($bordercolor)
     {
       $this->plotBorderColor = $bordercolor;
@@ -259,6 +281,12 @@ class HighchartsChart extends Widget
         return $this;
     }
 
+    public function setPlotOptions($plotOptions)
+    {
+        $this->plotOptions = $plotOptions;
+        return $this;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -354,27 +382,7 @@ class HighchartsChart extends Widget
             $returnValues['yAxis']['title']['text'] = $this->getYAxisTitle();
         }
 
-        $returnValues['plotOptions'] = [
-            'line' => [
-                'dataLabels' => [
-                    'color' => '#CCC',
-                    'enabled' => false,
-                ],
-                'marker' => [
-                    'lineColor' => '#333',
-                ],
-            ],
-            'spline' => [
-                'marker' => [
-                    'lineColor' => '#333',
-                ],
-            ],
-            'scatter' => [
-                'marker' => [
-                    'lineColor' => '#333',
-                ],
-            ],
-        ];
+        $returnValues['plotOptions'] = $this->plotOptions;
 
         $returnValues['tooltip'] = [
             'backgroundColor' => [
@@ -425,32 +433,7 @@ class HighchartsChart extends Widget
      */
     private function addSeriesData($returnValues)
     {
-        switch ($this->getType()) {
-            case 'line':
-                foreach ($this->getSeries() as $serieName => $serieValues) {
-                    $returnValues['series'][] = array(
-                        'name' => (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
-                        'data' => (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
-                        'type' => (isset($serieValues['type']) && $serieValues['type']) ? $serieValues['type'] : 'line',
-                    );
-                }
-                break;
-            case 'column':
-            case 'bar':
-                foreach ($this->getSeries() as $serieName => $serieValues) {
-                    $returnValues['series'][] = array(
-                        'name' => (isset($serieValues['name']) && $serieValues['name']) ? $serieValues['name'] : $serieName,
-                        'data' => (isset($serieValues['data']) && $serieValues['data']) ? $serieValues['data'] : $serieValues,
-                    );
-                }
-                break;
-            case 'pie':
-                $returnValues['series'][] = $this->series;
-                break;
-            default:
-                # code...
-                break;
-        }
+        $returnValues['series'] = $this->series;
 
         return $returnValues;
     }
